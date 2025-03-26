@@ -30,16 +30,20 @@ const Dashboard = () => {
     },
     // Add more movie objects as needed
   ]);
+  const handleAddMovie = () => navigate('/add-movie');
 
   return (
     <div className="dashboard">
       <header className="dashboard-header">
         <h1>Movie Collection</h1>
+        <button className="add-movie-button" onClick={handleAddMovie}>+ Add Movie</button>
       </header>
       <div className="movie-list">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+      {movies.length > 0 ? (
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+        ) : (
+          <p>No movies added yet. Click "Add Movie" to get started!</p>
+        )}
       </div>
     </div>
   );
